@@ -18,8 +18,8 @@ def __omicron_has_higher_frequency__(string: str) -> bool:
 
 class CaseRecord:
     def __init__(self, filename):
-        self.records = []               # Registro de personas con los casos
-        self.__load_file__(filename)        # Cargar el fichero al registro
+        self.records = []                # Registro de personas con los casos
+        self.__load_file__(filename)     # Cargar el fichero al registro
 
     def __load_file__(self, filename):
         with open(filename, "r", encoding="utf-8") as f:
@@ -70,15 +70,30 @@ class CaseRecord:
             else:
                 if person.commune == commune:
                     if person.commune in dictionary:
-                        dictionary[person.commune] += person.variant_type
+                        dictionary[person.commune] += " - " + person.variant_type
                     else:
                         dictionary[person.commune] = person.variant_type
         return dictionary
 
-    # def percentage_variant(self, commune: str) -> None:
-    #     dict = self.make_dictionary_communes_variant(commune)
-    #     dictionary_helper = {}
-    #     for string in dict.values().
+    def percentage_variant(self, commune: str) -> dict:
+        """
+        Devuelve un diccionario con el nombre de la comuna y el porcentaje
+        para cada variante presente en esta
+        :param commune: str
+        :return: dict
+        """
+        dictionary = self.make_dictionary_communes_variant(commune)
+        dictionary_helper = {}
+        variants = str(dictionary[commune]).split(" - ")
+        for string in variants:
+            if string in dictionary_helper:
+                dictionary_helper["Variante " + string] += 1
+            else:
+                dictionary_helper["Variante " + string] = 1
+        for key, value in dictionary_helper.items():
+            dictionary_helper[key] = str(round(value / len(variants) * 100, 2)) + "%"
+        dictionary[commune] = dictionary_helper
+        return dictionary
 
 
 class Person:
