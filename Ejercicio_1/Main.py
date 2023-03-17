@@ -16,7 +16,7 @@ make_graph(cases_by_commune)
 print("\n********************************************************\n")
 
 # Creo un diccionario que contiene las comunas donde predomina el omicron
-communes_predominate_omicron = case_record.make_dictionary_communes_variant()
+communes_predominate_omicron = case_record.predominate_omicron()
 print("Comunas donde predomina la variante omicron:")
 
 # Imprimo la informacion

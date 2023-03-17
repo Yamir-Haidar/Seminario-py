@@ -77,7 +77,8 @@ class CaseRecord:
 
     # def percentage_variant(self, commune: str) -> None:
     #     dict = self.make_dictionary_communes_variant(commune)
-    #     dictionary_helper
+    #     dictionary_helper = {}
+    #     for string in dict.values().
 
 
 class Person:
