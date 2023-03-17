@@ -1,11 +1,11 @@
 from logic.CaseRecord import CaseRecord
-from logic.Functions import make_graph, make_dictionary_communes_cases, predominate_omicron, print_dictionary
+from logic.Functions import make_graph, print_dictionary
 
 # Creo la clase que contiene los registros
 case_record = CaseRecord("../casosCovid.txt")
 
 # Creo un diccionario que contiene los casos por comunas
-cases_by_commune = make_dictionary_communes_cases(case_record)
+cases_by_commune = case_record.make_dictionary_communes_cases()
 print("Cantidad de casos por comuna:")
 
 # Imprimo la informacion
@@ -16,7 +16,7 @@ make_graph(cases_by_commune)
 print("\n********************************************************\n")
 
 # Creo un diccionario que contiene las comunas donde predomina el omicron
-communes_predominate_omicron = predominate_omicron(case_record)
+communes_predominate_omicron = case_record.make_dictionary_communes_variant()
 print("Comunas donde predomina la variante omicron:")
 
 # Imprimo la informacion
