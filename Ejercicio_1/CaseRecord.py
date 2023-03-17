@@ -18,8 +18,8 @@ def __omicron_has_higher_frequency__(string: str) -> bool:
 
 class CaseRecord:
     def __init__(self, filename):
-        self.records = []  # Registro de personas con los casos
-        self.__load_file__(filename)  # Cargar el fichero al registro
+        self.records = []                # Registro de personas con los casos
+        self.__load_file__(filename)     # Cargar el fichero al registro
 
     def __load_file__(self, filename):
         with open(filename, "r", encoding="utf-8") as f:
