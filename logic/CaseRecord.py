@@ -2,7 +2,7 @@ class CaseRecord:
     # Cargar el fichero y guardarlo en una lista
 
     def __init__(self, filename):
-        self.records = []               # Registro de casos
+        self.records = []               # Registro de personas con los casos
         self.load_file(filename)        # Cargar el fichero al registro
 
     def load_file(self, filename):
@@ -19,6 +19,3 @@ class Person:
         self.commune = commune
         self.variant_type = variant_type
         self.vaccinated = vaccinated
-
-    def info(self):
-        print(self.id, self.commune, self.variant_type, self.vaccinated)
