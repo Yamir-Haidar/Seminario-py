@@ -24,3 +24,15 @@ def print_dictionary(dictionary: dict) -> None:
     """
     for key, value in dictionary.items():
         print(key, value)
+
+
+def print_double_dictionary(dictionary: dict) -> None:
+    """
+    Imprime por pantalla el diccionario introducido por parametros
+    :param dictionary: dict
+    :return: None
+    """
+    for key, value in dictionary.items():
+        print(key + ":")
+        for key2, value2 in dict(dictionary[key]).items():
+            print(key2, value2)
