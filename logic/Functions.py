@@ -47,3 +47,8 @@ def omicron_has_higher_frequency(string: str) -> bool:
             switch_case[word] = 1
     return max(switch_case, key=switch_case.get) == "omicron" and \
         list(switch_case.values()).count(switch_case["omicron"]) == 1
+
+
+def print_dictionary(dictionary: dict) -> None:
+    for key, value in dictionary.items():
+        print(key, value)
