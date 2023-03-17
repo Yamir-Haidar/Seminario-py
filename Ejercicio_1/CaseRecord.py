@@ -54,7 +54,7 @@ class CaseRecord:
                 result[key] = str(value).count("omicron")
         return result
 
-    def make_dictionary_communes_variant(self) -> dict:
+    def make_dictionary_communes_variant(self, commune=None) -> dict:
         """
         Devuelve un diccionario con las comunas como clave y los tipos de
         variantes presentes como valor
@@ -62,11 +62,22 @@ class CaseRecord:
         """
         dictionary = {}
         for person in self.records:
-            if not person.commune in dictionary.keys():
-                dictionary[person.commune] = str(person.variant_type)
+            if commune is None:
+                if not person.commune in dictionary.keys():
+                    dictionary[person.commune] = str(person.variant_type)
+                else:
+                    dictionary[person.commune] += " - " + str(person.variant_type)
             else:
-                dictionary[person.commune] += " - " + str(person.variant_type)
+                if person.commune == commune:
+                    if person.commune in dictionary:
+                        dictionary[person.commune] += person.variant_type
+                    else:
+                        dictionary[person.commune] = person.variant_type
         return dictionary
+
+    # def percentage_variant(self, commune: str) -> None:
+    #     dict = self.make_dictionary_communes_variant(commune)
+    #     dictionary_helper
 
 
 class Person:

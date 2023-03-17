@@ -1,5 +1,5 @@
-from logic.CaseRecord import CaseRecord
-from logic.Functions import make_graph, print_dictionary
+from Ejercicio_1.CaseRecord import CaseRecord
+from Ejercicio_1.Functions import make_graph, print_dictionary
 
 # Creo la clase que contiene los registros
 case_record = CaseRecord("../casosCovid.txt")
