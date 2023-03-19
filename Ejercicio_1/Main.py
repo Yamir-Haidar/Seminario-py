@@ -2,7 +2,7 @@ from CaseRecord import CaseRecord
 from Functions import make_graph, print_dictionary, print_double_dictionary
 
 # Creo la clase que contiene los registros
-case_record = CaseRecord("../casosCovid.txt")
+case_record = CaseRecord("casosCovid.txt")
 
 # Creo un diccionario que contiene los casos por comunas
 cases_by_commune = case_record.make_dictionary_communes_cases()
