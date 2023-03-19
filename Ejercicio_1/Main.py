@@ -1,5 +1,5 @@
 from CaseRecord import CaseRecord
-from Functions import make_graph, print_dictionary, print_double_dictionary
+from utils.Functions import make_graph, print_dictionary, print_double_dictionary
 
 # Creo la clase que contiene los registros
 case_record = CaseRecord("casosCovid.txt")

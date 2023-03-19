@@ -1,6 +1,4 @@
-
 def Pedir_Numero(st) -> int:
-
     while True:
 
         try:
@@ -18,26 +16,23 @@ def Pedir_Numero(st) -> int:
 
     return num
 
-def Numeros_LLenado():
 
+def Numeros_LLenado():
     lista = list()
 
     while True:
-
         print("Ingrese [-1] para salir!!\n")
         num = Pedir_Numero("Ingrese un numero:")
-        if num == -1:
-
-
+        # if num == -1:
 
 
 fila = Pedir_Numero("Ingrese la cantidad de filas")
 columna = Pedir_Numero("Ingrese la cantidad de columnas")
 
-listaNum = [1,2,8,4,2]
+listaNum = [1, 2, 8, 4, 2]
 k = 0
 
-matriz = [ [None for j in range(columna)] for i in range(fila)]
+matriz = [[None for j in range(columna)] for i in range(fila)]
 
 k = 0
 
@@ -49,6 +44,5 @@ for i in range(fila):
         k += 1
 
         if k == len(listaNum): k = 0
-
 
 m: int
