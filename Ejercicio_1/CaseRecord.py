@@ -95,6 +95,17 @@ class CaseRecord:
         dictionary[commune] = dictionary_helper
         return dictionary
 
+    def total_vaccinated(self) -> int:
+        """
+        Devuelve el numero de personas vacunadas
+        :return: int
+        """
+        result = 0
+        for person in self.records:
+            if person.vaccinated == "si":
+                result += 1
+        return result
+
 
 class Person:
     def __init__(self, id, commune, variant_type, vaccinated):
