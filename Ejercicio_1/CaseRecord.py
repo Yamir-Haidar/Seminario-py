@@ -25,8 +25,8 @@ class CaseRecord:
         self.__load_file__(filename)     # Cargar el fichero al registro
 
     def __load_file__(self, filename):
-        with open(filename, "r", encoding="utf-8") as f:
-            for line in f:
+        with open(filename, "r", encoding="utf-8") as file:
+            for line in file:
                 data = line.strip().split(',')
                 record = Person(data[0], data[1], data[2], data[3])
                 self.records.append(record)
