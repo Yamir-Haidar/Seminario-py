@@ -10,15 +10,20 @@ print("Cantidad de casos por comuna:")
 
 # Imprimo la informacion
 print_dictionary(cases_by_commune)
+print("\n********************************************************\n")
 
 # Imprimo el grafico de barras horizontales
 make_graph(cases_by_commune)
-print("\n********************************************************\n")
 
 print("Comunas donde predomina la variante omicron:")
-
-# Imprimo la informacion
 print_dictionary(case_record.predominate_omicron())
+
 print("\n********************************************************\n")
+
 print("Porcentaje de casos en Villarrica:")
 print_double_dictionary(case_record.percentage_variant("Villarrica"))
+
+print("\n********************************************************\n")
+
+print("Total de personas vacunadas:")
+print(case_record.total_vaccinated())
