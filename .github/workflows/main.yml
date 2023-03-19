@@ -2,7 +2,7 @@ name: Install Dependencies
 
 on:
   push:
-    branches: [ main ]
+  pull_request:
 
 jobs:
   build-windows:
@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.11.1
-
+ 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
