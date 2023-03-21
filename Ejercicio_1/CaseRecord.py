@@ -3,8 +3,8 @@ from Person import Person
 
 class CaseRecord:
     def __init__(self, filename):
-        self.records = []                # Registro de personas con los casos
-        self.__load_file__(filename)     # Cargar el fichero al registro
+        self.records = []  # Registro de personas con los casos
+        self.__load_file__(filename)  # Cargar el fichero al registro
 
     def __load_file__(self, filename: str) -> None:
         with open(filename, "r", encoding="utf-8") as file:
@@ -14,22 +14,25 @@ class CaseRecord:
                 self.records.append(record)
 
     @staticmethod
-    def __omicron_has_higher_frequency__(string: str) -> bool:
+    def __omicron_has_higher_frequency__(variants: list) -> bool:
         """
         Devuelve True si el string "omicron" es el que sucede mas veces en
         el string introducido por parametros(En caso de empate con otro
         string en mayor numero de repeticiones, la funcion devolvera False).
-        :param string: str
+        :param variants: list
         :return: bool
         """
-        switch_case = {}
-        for word in string.split(" - "):
-            if word in switch_case:
-                switch_case[word] += 1
+        counter = {}
+        for value in variants:
+            if value in counter:
+                counter[value] += 1
             else:
-                switch_case[word] = 1
-        return max(switch_case, key=switch_case.get) == "omicron" and \
-            list(switch_case.values()).count(switch_case["omicron"]) == 1
+                counter[value] = 1
+
+        # Encuentra el valor que se repite la mayor cantidad de veces y es el único que se repite esa cantidad de veces
+        max_value = max(counter, key=counter.get)
+        boolean = list(counter.values()).count(counter[max_value]) == 1 and max_value == "omicron"
+        return boolean
 
     def make_dictionary_communes_cases(self) -> dict:
         """
@@ -64,18 +67,19 @@ class CaseRecord:
         :return: dict
         """
         result = {}
-        for person in self.records:
-            if commune is None:
+        if commune is None:
+            for person in self.records:
                 if not person.commune in result.keys():
-                    result[person.commune] = str(person.variant_type)
+                    result[person.commune] = [person.variant_type]
                 else:
-                    result[person.commune] += " - " + str(person.variant_type)
-            else:
+                    result[person.commune].append(person.variant_type)
+        else:
+            for person in self.records:
                 if person.commune == commune:
-                    if person.commune in result:
-                        result[person.commune] += " - " + person.variant_type
+                    if person.commune in result.keys():
+                        result[person.commune].append(person.variant_type)
                     else:
-                        result[person.commune] = person.variant_type
+                        result[person.commune] = [person.variant_type]
         return result
 
     def percentage_variant(self, commune: str) -> dict:
@@ -87,14 +91,14 @@ class CaseRecord:
         """
         result = self.make_dictionary_communes_variant(commune)
         result_helper = {}
-        variants = str(result[commune]).split(" - ")
-        for string in variants:
-            if string in result_helper:
-                result_helper["Variante " + string] += 1
+        # variants = str(result.values())
+        for element in result.get(commune):
+            if element in result_helper:
+                result_helper["Variante " + element] += 1
             else:
-                result_helper["Variante " + string] = 1
+                result_helper["Variante " + element] = 1
         for key, value in result_helper.items():
-            result_helper[key] = str(round(value / len(variants) * 100, 2)) + "%"
+            result_helper[key] = str(round(value / len(result.get(commune)) * 100, 2)) + "%"
         result[commune] = result_helper
         return result
 
