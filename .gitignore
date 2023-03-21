@@ -1,5 +1,6 @@
 .idea
 Ejercicio_1/_*
 venv
-_venv
+utils/_*
 Ejercicio_2/_*
+_venv

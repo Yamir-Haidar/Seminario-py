@@ -3,8 +3,8 @@ from Person import Person
 
 class CaseRecord:
     def __init__(self, filename):
-        self.records = []  # Registro de personas con los casos
-        self.__load_file__(filename)  # Cargar el fichero al registro
+        self.records = []                   # Registro de personas con los casos
+        self.__load_file__(filename)         # Cargar el fichero al registro
 
     def __load_file__(self, filename: str) -> None:
         with open(filename, "r", encoding="utf-8") as file:
