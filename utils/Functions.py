@@ -32,7 +32,7 @@ def print_double_dictionary(dictionary: dict) -> None:
     :param dictionary: dict
     :return: None
     """
-    for key in dictionary.items():
-        print(key + ":")
+    for key, _ in dictionary.items():
+        print(key + ":" )
         for key2, value2 in dict(dictionary[key]).items():
             print(key2, value2)
