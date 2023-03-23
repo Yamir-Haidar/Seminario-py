@@ -13,7 +13,6 @@ class Matrix:
         introducidos por el usuario
         """
         self.matriz = [[0 for _ in range(self.column)] for _ in range(self.row)]
-        print(self.matriz)
         k = 0
         for i in range(self.row):
             for j in range(self.column):

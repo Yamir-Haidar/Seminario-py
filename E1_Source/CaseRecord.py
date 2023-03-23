@@ -81,6 +81,14 @@ class CaseRecord:
                         result[person.commune] = [person.variant_type]
         return result
 
+    def ask_commune(self, msg: str):
+        while True:
+            commune = input(msg)
+            if commune in self.make_dictionary_communes_variant():
+                return commune
+            else:
+                print("No existe la comuna")
+
     def percentage_variant(self, commune: str) -> dict:
         """
         Devuelve un diccionario con el nombre de la comuna y el porcentaje
@@ -88,6 +96,7 @@ class CaseRecord:
         :param commune: str
         :return: dict
         """
+
         result = self.make_dictionary_communes_variant(commune)
         result_helper = {}
         # variants = str(result.values())
