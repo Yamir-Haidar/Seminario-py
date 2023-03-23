@@ -1,4 +1,4 @@
-from Matrix import Matrix
+from E2_Source.Matrix import Matrix
 from utils.Numbers_Validations import solicit_numbers, solicit_numbers_for_fill_matrix,enter_position
 
 
