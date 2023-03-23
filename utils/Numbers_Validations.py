@@ -29,7 +29,7 @@ def solicit_numbers(st: str, flag: bool) -> int:
     return num
 
 
-def solicit_numbers_for_fill_matrix() -> list:
+def solicit_numbers_for_fill_matrix(dim: int) -> list:
     """""
     Retorna una lista con los numeros con los que se 
     va a rellenar la matriz
@@ -37,17 +37,17 @@ def solicit_numbers_for_fill_matrix() -> list:
 
     numbers = []
 
-    while True:
+    while len(numbers)<dim:
 
         print("Ingrese [-1] para salir")
 
-        num: int = solicit_numbers("Ingrese un numero para rellenar la lista:", True)
+        num: int = solicit_numbers("Ingrese un número para rellenar la lista:", True)
 
         if num == -1:
 
             if len(numbers) == 0:
 
-                print("Debe ingresar al menos un numero para rellenar la lista!!!\n")
+                print("Debe ingresar al menos un número para rellenar la lista!!!\n")
 
             else:
                 break
@@ -66,7 +66,7 @@ def is_number(number: str) -> bool:
 
     try:
 
-        n = int(number)
+        int(number)
 
     except ValueError:
 
@@ -76,14 +76,14 @@ def is_number(number: str) -> bool:
     return True
 
 
-def enter_position(str: str, lim: int) -> int:
+def enter_position(string: str, lim: int) -> int:
     """
       Valida que la entrada por teclado sea un numero y que el numero este en n rango de 1-X
       !Se usa para elegir una posicion de la matriz!
      """
     while True:
 
-        position = input(f"{str}")
+        position = input(f"{string}")
 
         if is_number(position):
 
