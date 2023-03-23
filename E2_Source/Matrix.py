@@ -3,16 +3,17 @@ class Matrix:
     def __init__(self, row: int, column: int, numbers: list):
         self.row = row
         self.column = column
-        self.matriz: []
+        self.matriz: list
 
-        self.__fill_matrix(numbers)
+        self.fill_matrix(numbers)
 
-    def __fill_matrix(self, numbers: list):
+    def fill_matrix(self, numbers: list):
         """
         Crea la matriz con las dimensiones deseadas y la rellena con los numeros
         introducidos por el usuario
         """
-        self.matriz = [[None for j in range(self.column)] for i in range(self.row)]
+        self.matriz = [[0 for _ in range(self.column)] for _ in range(self.row)]
+        print(self.matriz)
         k = 0
         for i in range(self.row):
             for j in range(self.column):
@@ -64,7 +65,7 @@ class Matrix:
          Retorna una fila dada de la matriz ordenada descendentemente
          """
 
-        lis = self.matriz[row]
+        lis:list = self.matriz[row]
         lis.sort(reverse=True)
 
         return lis
